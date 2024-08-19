@@ -290,4 +290,340 @@ public class MyController { }
 ```
 ```
 
+
+Here's a `.md` file detailing dependency injection annotations in Spring, along with code examples:
+
+---
+
+### **DependencyInjectionAnnotations.md**
+
+```md
+# Spring Dependency Injection Annotations with Code Examples
+
+## @Autowired
+The `@Autowired` annotation is used to automatically inject dependencies by Spring's Dependency Injection mechanism.
+
+### Example:
+
+```java
+@Service
+public class MyService {
+
+    @Autowired
+    private MyRepository myRepository;
+
+    public List<Item> getItems() {
+        return myRepository.findAll();
+    }
+}
+```
+
+In this example, `MyRepository` is automatically injected into `MyService` by Spring.
+
+---
+
+## @Qualifier
+`@Qualifier` is used to specify which bean to inject when multiple beans of the same type exist in the application context.
+
+### Example:
+
+```java
+@Service
+public class MyService {
+
+    @Autowired
+    @Qualifier("primaryRepository")
+    private MyRepository myRepository;
+
+    public List<Item> getItems() {
+        return myRepository.findAll();
+    }
+}
+```
+
+Here, `@Qualifier("primaryRepository")` specifies the exact bean to inject when multiple beans of the same type are available.
+
+---
+
+## @Inject
+The `@Inject` annotation is a Java alternative to `@Autowired` that is part of the `javax.inject` package.
+
+### Example:
+
+```java
+@Service
+public class MyService {
+
+    @Inject
+    private MyRepository myRepository;
+
+    public List<Item> getItems() {
+        return myRepository.findAll();
+    }
+}
+```
+
+This functions similarly to `@Autowired` but comes from the standard Java `javax.inject` package.
+
+---
+
+## @Resource
+`@Resource` is a JSR-250 annotation that behaves similarly to `@Autowired` but allows more control over the injection by name or type.
+
+### Example:
+
+```java
+@Service
+public class MyService {
+
+    @Resource(name = "mySpecificRepository")
+    private MyRepository myRepository;
+
+    public List<Item> getItems() {
+        return myRepository.findAll();
+    }
+}
+```
+
+`@Resource` allows you to inject a bean by its name or type. In this case, it injects a bean with the name `"mySpecificRepository"`.
+
+---
+
+## @Component
+The `@Component` annotation marks a class as a Spring-managed component. It is a generic stereotype for any Spring-managed bean.
+
+### Example:
+
+```java
+@Component
+public class MyComponent {
+
+    public void doSomething() {
+        System.out.println("Component doing something!");
+    }
+}
+```
+
+The `MyComponent` class is now a Spring-managed bean and can be injected where needed.
+
+---
+
+## @Service
+`@Service` is a specialization of `@Component` that indicates a service-layer class.
+
+### Example:
+
+```java
+@Service
+public class UserService {
+
+    public User getUserById(Long id) {
+        // Fetch user from the database
+    }
+}
+```
+
+`@Service` is used to mark the service layer, which usually contains business logic.
+
+---
+
+## @Repository
+`@Repository` is a specialization of `@Component` that indicates a data access object (DAO) class.
+
+### Example:
+
+```java
+@Repository
+public class UserRepository {
+
+    public User findById(Long id) {
+        // Database logic to find user by ID
+    }
+}
+```
+
+`@Repository` marks the DAO layer responsible for interacting with the database.
+
+---
+
+## @Scope
+`@Scope` is used to define the scope of a Spring bean. The most common scopes are `singleton` and `prototype`.
+
+### Example:
+
+```java
+@Component
+@Scope("prototype")
+public class PrototypeBean {
+
+    public PrototypeBean() {
+        System.out.println("New PrototypeBean instance created!");
+    }
+}
+```
+
+Here, a new instance of `PrototypeBean` will be created every time it is requested from the Spring container.
+
+---
+
+This `.md` file provides clear explanations and code examples for the key dependency injection annotations in Spring.
+```
+
+---
+
+Here is a `.md` file with detailed explanations and code examples for `@Value`, `@Cacheable`, and `@Async` annotations in Spring:
+
+---
+
+### **Value_Cacheable_Async_Annotations.md**
+
+```md
+# Spring Annotations: @Value, @Cacheable, and @Async
+
+## 1. @Value
+The `@Value` annotation is used to inject values into fields from properties or environment variables. It is commonly used in Spring to inject configuration properties.
+
+### Example:
+
+```java
+@Service
+public class MyService {
+
+    @Value("${my.custom.property}")
+    private String customProperty;
+
+    public String getCustomProperty() {
+        return customProperty;
+    }
+}
+```
+
+In this example, `@Value("${my.custom.property}")` injects the value of `my.custom.property` from `application.properties` into the `customProperty` field.
+
+### application.properties:
+
+```
+my.custom.property=Hello, World!
+```
+
+Output when calling `getCustomProperty()` will be `"Hello, World!"`.
+
+---
+
+## 2. @Cacheable
+The `@Cacheable` annotation is used to mark methods whose results should be cached. When a method annotated with `@Cacheable` is invoked, Spring checks whether the result is already in the cache. If it is, the cached value is returned; if not, the method is executed and the result is cached.
+
+### Example:
+
+```java
+@Service
+public class UserService {
+
+    @Cacheable("users")
+    public User findUserById(Long id) {
+        // Simulate a slow database query
+        simulateSlowService();
+        return new User(id, "John Doe");
+    }
+
+    private void simulateSlowService() {
+        try {
+            Thread.sleep(3000L); // 3 seconds delay
+        } catch (InterruptedException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+}
+```
+
+In this example, the `findUserById` method is annotated with `@Cacheable("users")`. When the method is called with a specific `id`, the result is stored in the cache with the key `"users"`. On subsequent calls with the same `id`, the cached value will be returned, avoiding the delay caused by `simulateSlowService()`.
+
+### Configuration in `application.properties`:
+
+```properties
+spring.cache.type=simple
+```
+
+This enables a simple in-memory cache.
+
+---
+
+## 3. @Async
+The `@Async` annotation is used to run methods asynchronously in the background. When a method is annotated with `@Async`, Spring executes it in a separate thread, so the caller does not have to wait for the method to complete.
+
+### Example:
+
+```java
+@Service
+public class NotificationService {
+
+    @Async
+    public void sendNotification(String message) {
+        System.out.println("Sending notification: " + message);
+        simulateLongRunningTask();
+        System.out.println("Notification sent!");
+    }
+
+    private void simulateLongRunningTask() {
+        try {
+            Thread.sleep(5000L); // 5 seconds delay
+        } catch (InterruptedException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+}
+```
+
+In this example, the `sendNotification` method runs asynchronously in the background. The calling method will not have to wait for the 5-second delay caused by `simulateLongRunningTask()`.
+
+### Example of calling the method:
+
+```java
+@RestController
+public class NotificationController {
+
+    @Autowired
+    private NotificationService notificationService;
+
+    @GetMapping("/send")
+    public String sendNotification() {
+        notificationService.sendNotification("Hello, Async World!");
+        return "Notification request received!";
+    }
+}
+```
+
+When calling `/send`, the response `"Notification request received!"` will be returned immediately while the `sendNotification` method executes in the background.
+
+### Configuration in `application.properties`:
+
+```properties
+spring.task.execution.pool.core-size=5
+spring.task.execution.pool.max-size=10
+spring.task.execution.pool.queue-capacity=500
+```
+
+This configures the thread pool for executing async tasks.
+
+### Enable Async Support:
+Make sure to enable asynchronous processing in your Spring Boot application by adding the `@EnableAsync` annotation to your main class.
+
+```java
+@SpringBootApplication
+@EnableAsync
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
+
+---
+
+This `.md` file explains the use of `@Value`, `@Cacheable`, and `@Async` annotations in Spring with code examples.
+```
+
+---
+
+This `.md` file provides detailed explanations and practical examples for the annotations you've requested. Let me know if you'd like any further details or other annotations!
 This `.md` file provides a complete overview of commonly used Spring Boot and Spring MVC annotations with descriptions and usage examples.
