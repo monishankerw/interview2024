@@ -1,5 +1,4 @@
               
-             Here's an assignment for a full-stack developer using Java Spring Boot for the backend and a frontend technology like React or Angular. The assignment involves creating a simple yet functional application that demonstrates your full-stack development skills.
 
 ---
 
@@ -102,4 +101,3 @@ Create a web application that allows users to manage tasks. Users should be able
 - [React.js Documentation](https://reactjs.org/docs/getting-started.html)
 - [Angular Documentation](https://angular.io/docs)
 
-This assignment will showcase your full-stack development capabilities, from API creation and database handling on the backend to front-end development and user interface design.
