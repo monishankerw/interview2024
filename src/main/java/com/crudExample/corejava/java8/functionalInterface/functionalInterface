@@ -1,0 +1,22 @@
+
+                         Functional Interface
+
+
+        a. A Functional Interface is an interface that contains only one abstract method(Incomplete method).
+        b. It is also known as SAM Interface(Single Abstract Method)
+        c. A Functional Interface can have any number of default and static method.
+        Exam: Runnable, Camparable, ActionListener
+        d. Lambda Expressions can be used and executted by representing the interface with an annotation called @FunctionalInterface.
+        e. @Functional Interface annotation is used to ensure that the functional interface can not more than one abstract method.
+        Ex: 1
+        @FunctionalInterface
+       public interface A {
+           public void test();
+       }
+
+       Ex:2
+       @FunctionalInterface
+       public interface A {
+           public void test();
+           public void test1();
+       }//error

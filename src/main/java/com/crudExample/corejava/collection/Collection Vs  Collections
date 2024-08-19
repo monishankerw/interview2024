@@ -1,0 +1,32 @@
+Collection: Any group of individual objects which are represent as a single unit is know as a collection of objects.
+       ->It is an interface.
+       ->It stores serveral an object as single entily.
+       ->Collection gives us radimate data structure.
+       ->Size of collection is dynamics.
+       ->store both homogeneous and heterogeneous data.
+       ->memory more efficient.
+       ->He got underlying data structure to simplify our work.
+       ->java.util.collection(jdk1.2)
+
+       1. Difference between Collection and Collections.
+       Collection
+       ->It is an interface.
+       ->It stores serveral an object as single entily.
+
+       Collections
+       ->It is a class.
+       ->It is a utility class that's helps us to perform operations like sorting,searching on object present inside collection.
+
+       2. Difference between Array and Collections.
+       Array
+       ->It is fixed size.
+       ->Store only homogeneous data.
+       ->Memory usage it is less efficient.
+       ->No underlying data structure.
+
+       Collection
+       ->Size of collection is dynamics.
+       ->store both homogeneous and heterogeneous data.
+       ->memory more efficient.
+       ->He got underlying data structure to simplify our work.
+

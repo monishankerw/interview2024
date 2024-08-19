@@ -1,0 +1,78 @@
+        Q. Difference between HashMap and HashTable.
+              HashMap:
+              1. not-synchronized,not-thread safe(better performance),allows null for both key and value,non-legacy,jdk1.2 version
+              HashTable:
+              synchronised,ThreadSafe(poorPerformance),not allow for both key and values, legacy,jdk1.1 version
+
+              Q. Difference between HashMap and HashSet.
+              hashMap:
+              key-value pair,allow duplicate value,put(k,v),2 object required
+              HashSet:
+              only key,not allow duplicate value,add(obj),1 object required
+
+              Q How does HashMap internally work?
+              -> HashMap internally work HashTable.
+              HashMap<String,Integer>map=new HashMap<>();
+              map.put("xyz(key)",32(value));
+              ->HashMap replaced LinkedList with a binary tree when the  number of elements in bucket reduced certain threshold.
+              ->While converting the list to binary tree hash code is used as a branch variable.
+
+              IC=16;
+              LF=0.75
+              Hashing tech=IC*LF=16*0.75=12
+              12th pair of HashMap its caplacity will become 32.
+
+              https://www.geeksforgeeks.org/internal-working-of-hashmap-java/
+
+
+              HashTable:
+              ->Synchronized, ThreadSafe
+              ->store the contains as key value pairs.
+              ->The HashTable class implemets a hashTable,Which keys to values.
+              ->Any non-null object can be used as akey or as a value.
+              https://www.geeksforgeeks.org/how-hashtable-works-internally-in-java/
+
+              How to internally work hAshTable?
+              Initial size of HashTable is 16 and Load ratio is 75%,out of 16, 12 elements injected into the 16, the size of table automatically double.
+
+              class A{
+                  main(){
+                      HashTable<Integer,String>h=new HashTable<>();
+                      h.put(100,"abc");
+                      h.put(101,"dbc");
+                      sout(h);
+
+                  }
+              }
+              public class Student {
+                  public static void main(String[] args) {
+                      Map<Integer, String> studentMap=new HashMap<>();
+                      studentMap.put(100,"abc");
+                      studentMap.put(100,"mbc");
+                      System.out.println(studentMap);
+                      System.out.println(studentMap.get(102));
+                      System.out.println(studentMap.values());
+                      System.out.println(studentMap.keySet());
+                  }
+              }{100=mbc}
+              null
+              [mbc]
+              [100]
+
+              1. FrequencyOfElements occurrence
+
+              public class FrequencyCount {
+                  public static void main(String[] args) {
+                      int[] arr={1,2,3,4,1,2,3,1,2,1};
+                      Map<Integer,Integer> freqCount=freqCount(arr);
+                      System.out.println(freqCount);
+                  }
+
+                  private static Map<Integer, Integer> freqCount(int[] arr) {
+                      Map<Integer,Integer>map=new HashMap<>();
+                      for(int num:arr){
+                          map.put(num,map.getOrDefault(num,0)+1);
+                      }
+                      return map;
+                  }
+              }

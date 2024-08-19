@@ -1,0 +1,5 @@
+How to create custom Exception? code
+
+---> In java , we can create our own exceptions that are derived classes of the exception class.
+----> Creating our own Exception is known as custom exception or user-defined exception.
+-----> Basically java custom exceptions are used to customize the exception accourding to user need.

@@ -1,0 +1,45 @@
+________________________________
+HashSet
+
+          HashSet:
+->It will contains only unique element.
+-> Does not maintain insertion order.
+-> Not Synchronized and not thread safe
+->This class permitted(store) null elements.
+->It is used Hashing to inject data into data base.
+->Does not have key value pair.(only key).
+->not allow Duplicate value.
+->a.add(obj);
+->1 object required.
+->extends HashSet class.
+->implement set, cloneable and serializable interface.
+->Hash Set internally created HashMap.
+
+
+Q. How to HashSet internally work?
+Internally, it uses a HashMap to store its elements.
+     1. The HashSet uses a HashMap internally where each element is stored as a key with a constant dummy value.
+     2. The hash code of an element determines the index of the bucket where it will be stored.
+     3. Collisions are handled by using linked lists or balanced trees within the buckets.
+     4. Before adding a new element, HashSet checks for duplicates using the equals() method to ensure all elements are unique.
+
+
+
+
+
+
+
+
+
+
+
+_________________________
+HashSet vs LinkedHashSet
+
+HashSet
+1. HashSet does not maintain insertion order.
+2. HashSet internally map HashMap.
+
+LinkedHashSet
+1. LinkedHashSet maintain insertion order.
+2. LinkedHashSet internally map LinkedHashMap.

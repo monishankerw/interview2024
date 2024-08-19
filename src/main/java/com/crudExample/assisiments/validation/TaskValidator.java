@@ -1,4 +1,4 @@
-package com.crudExample.validation;
+package com.crudExample.assisiments.validation;
 
 import com.crudExample.assisiments.Status;
 import com.crudExample.assisiments.exception.DuplicateTaskException;

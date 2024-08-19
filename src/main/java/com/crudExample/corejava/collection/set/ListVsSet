@@ -1,0 +1,31 @@
+   SET
+       https://www.geeksforgeeks.org/set-in-java/
+          extends            extends                implement
+       set--------->SortedSet---------->NavigableSet----------->TreeSet
+
+
+       Set:
+       ---> HashSet, TreeSet,LinkedHashSet
+       ----> It is an interface
+       ----->java.util package
+       ----->Does not maintain any insertion order
+       ---->Can not allow to duplicate value.
+       ---->Set can store only one null value.
+       ---->Not index based data structure store the data HashCode values.
+
+
+
+
+List vs Set
+List:
+1. ArrayList and LinkedList
+2. allow to store duplicate value.
+3. Index based data structure.
+4. List can store any value of null value.
+
+Set
+
+1. HashSet and TreeSet
+2. not allow to store duplicate value.
+3. not index based data structure store the data Hashcode value.
+4. Set can store any one null value.

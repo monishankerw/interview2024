@@ -1,0 +1,97 @@
+ Thread:
+       MultiTasking done at program level is called as thread.
+       -> Threads are light weight.
+       -> Threads share same address space.
+       -> Separate part of execution in program.
+       ->Interthread communication is less expensive.
+       -> Context switching between thread is low cost.
+
+       Process
+       -> A Process is a program is execution.
+       ->Process are heavy weight.
+       ->Process required Separate address space.
+       ->Interthread communication is expensive.
+       -> Context switching between thread is costly.
+
+       ADVANTAGE OF THREAD:
+       1. Thread can be utilized to free up the main thread.
+       2. Thread can be used to breakup a task into smaller unit that can be executed concurrently.
+
+       DISVANTAGE OF THREAD:
+       1. When more threads, the code becomes difficult to debug and maintain.
+       2. Thread creation put a load on the system memory and cpu.
+
+       TWO types of created by using:
+       1. extending the Thread Class.
+       2. implementing the Runnable Interface.
+
+       1. extending the Thread Class.
+       -> Here we inherited run method from thread we override user defined class.
+       -> To start run Thread we use start method of thread class.
+
+       exp: 1
+       public class A extends Thread{
+           @Override
+           public void run() {
+               for(int i=0;i<899;i++){
+                   System.out.println("Task1");
+               }
+           }
+
+           public static void main(String[] args) {
+               A a1=new A();
+               a1.start();
+               for (int i=0;i<788;i++){
+                   System.out.println("Task2");
+               }
+           }
+       }
+
+
+       2. public class MultiThreadingDemo extends Thread{
+           @Override
+           public void run() {
+               try{
+                   System.out.println("Thread"+Thread.currentThread().getId()+"is running");
+               }catch (Exception e){
+                   System.out.println("Exception occurred");
+               }
+           }
+
+           public static void main(String[] args) {
+               for (int i=0;i<8;i++){
+                   MultiThreadingDemo ob=new MultiThreadingDemo() ;
+                   ob.start();
+               }
+           }
+       }
+
+       public class Test extends Thread{
+           @Override
+           public void run() {
+               System.out.println("Test");
+           }
+
+           public static void main(String[] args) {
+               Test test=new Test();
+               test.run();
+               test.start();
+           }
+       }Test
+       Test
+
+       public class ThreadExp extends Thread{
+           @Override
+           public void run() {
+               System.out.println("Hello!!!!...");
+           }
+
+           public static void main(String[] args) {
+               ThreadExp threadExp=new ThreadExp();
+               threadExp.start();
+               threadExp.stop();
+               threadExp.start();
+           }//Exception in thread "main" java.lang.IllegalThreadStateException
+          // at java.base/java.lang.Thread.start
+           //Thread cannot be started twice
+       }

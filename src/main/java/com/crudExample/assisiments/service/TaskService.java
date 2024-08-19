@@ -4,7 +4,7 @@ import com.crudExample.assisiments.dto.TaskDTO;
 import com.crudExample.assisiments.entity.Task;
 import com.crudExample.assisiments.exception.TaskNotFoundException;
 import com.crudExample.assisiments.repository.TaskRepository;
-import com.crudExample.validation.TaskValidator;
+import com.crudExample.assisiments.validation.TaskValidator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

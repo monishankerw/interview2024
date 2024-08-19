@@ -1,0 +1,15 @@
+      MAP
+                      https://www.geeksforgeeks.org/map-interface-java-examples/
+
+
+                                 implement                       extends               implement                 extends
+                   TreeMap(Class)---------->SortedMap(Interface)--------->map(interace)<----------HashMap(class)<---------LinkedHashMap(class)
+
+             Map: It is not part of collecton framwork
+             1. key-value pairs(store data).
+             2. internally using HashTable.
+             3. injected the data into table using Hashing technique.
+             4. not synchronized and not thread safe.
+             5. implement Hashmap,TreeMap,LinkedHashMap
+             6. HashMap does not allow duplicate key and allow duplicate value.
+             7. unique allow key
