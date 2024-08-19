@@ -11,12 +11,13 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
-@Entity
+
+@Entity(name = "CustomTask")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "tasks")
+@Table(name = "tasks", uniqueConstraints = {@UniqueConstraint(columnNames = "title")})
 public class Task {
 
     @Id
