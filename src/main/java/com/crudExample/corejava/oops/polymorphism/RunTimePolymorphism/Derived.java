@@ -1,4 +1,4 @@
-package com.crudExample.corejava.oops.polymorphism.A.B;
+package com.crudExample.corejava.oops.polymorphism.RunTimePolymorphism;
 
 //public class Derived extends Test
 //{

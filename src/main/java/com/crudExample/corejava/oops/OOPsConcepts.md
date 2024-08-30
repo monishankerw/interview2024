@@ -396,6 +396,13 @@ The `new` keyword in Java is used to create new objects.
        }
    }
    ```
+  Q. Advantage of oops over Procedure -oriented programming languages.
+  1. Oops make development and maintenance easier,
+     whereas in a procedure-oriented programming language, 
+     it is not easy to manage if code grows as project size increases.
+2. Oops provides data hiding,whenever in a procedure-oriented programming languages,globle data can be accessed from any where.
+
+
 
 
 

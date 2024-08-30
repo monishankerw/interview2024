@@ -1,4 +1,4 @@
-package com.crudExample.corejava.oops.polymorphism.A;
+package com.crudExample.corejava.oops.polymorphism;
 
 abstract class Geeks implements GFG
 {
