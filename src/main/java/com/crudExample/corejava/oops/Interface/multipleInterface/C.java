@@ -6,7 +6,7 @@ public interface C {
         public void test2(){
             System.out.println(2);
         }
-        public static class E extends D implements  C{
+        public static class E  extends D implements  C{
 
             @Override
             public void test1() {
