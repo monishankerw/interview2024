@@ -1,4 +1,4 @@
-package com.crudExample.corejava.java8.streamApi;
+package com.crudExample.corejava.java8.streamApi.streamApiFilterQuest;
 
 
 import java.util.Arrays;
